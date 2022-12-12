@@ -5,6 +5,11 @@ Scrape proxies from different sites, store in JSON format
 ```
 pip install -r requirements.txt
 ```
+### Your IP:
+```
+>> py/python3 myip.py
+['123.x.x.x', '123.x.x.x', '{"ip":"123.x.x.x","country":"Pakistan","cc":"PK"}', '123.x.x.x']
+```
 
 ### Scrape:
 #### Linux:
