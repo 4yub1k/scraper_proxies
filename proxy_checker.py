@@ -1,5 +1,7 @@
 from requests import get, exceptions
 from concurrent.futures import ThreadPoolExecutor
+from random import randint
+
 
 # urls = ['http://ipecho.net/plain', 'https://api.ipify.org', 'https://api.myip.com', 'https://ip.seeip.org']
 # proxy = 'http://104.148.36.10:80'
@@ -14,12 +16,11 @@ proxies = [
     "162.240.75.37:80"
 ]
 
-def check_proxy(url, proxy, MAX_TIMEOUT=3):
+def check_proxy(url, proxy, user_agent, MAX_TIMEOUT=3):
+
     try:
+        headers = {'User-Agent': user_agent}
         # resp = get(url, proxies={"http": proxy, "https": proxy}, timeout=MAX_TIMEOUT)
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (iPad; CPU OS 8_4_1 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12H321 Safari/600.1.4'
-        }
         resp = get(url, headers=headers, proxies={"http": proxy, "https": proxy}, timeout=MAX_TIMEOUT)
         return resp.text
     except exceptions.ProxyError as err:
@@ -34,9 +35,12 @@ def check_proxy(url, proxy, MAX_TIMEOUT=3):
 
 def main(urls=None, proxies=None):
 
+    with open("user-agents.txt", 'r') as ua:
+        user_agent = ua.readlines()     # load in list ("\n")
+
     MAX_TIMEOUT = 5     # seconds
     with ThreadPoolExecutor() as exe:
-        output = {exe.submit(check_proxy, url,proxy, MAX_TIMEOUT): url for url in urls for proxy in proxies}
+        output = {exe.submit(check_proxy, url, proxy, user_agent[randint(0, 1000)].strip(), MAX_TIMEOUT): url for url in urls for proxy in proxies}
     
     for res in output:
         # working proxies
