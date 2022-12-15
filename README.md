@@ -3,10 +3,23 @@ Scrape proxies from different sites, store in JSON format
 
 ### Install:
 ```
+git clone https://github.com/4yub1k/scraper_proxies.git
+cd scraper_proxies
 pip install -r requirements.txt
 ```
+### Check Proxy:
+`py/python3 scrape_proxies.py`\
+It will test the list of provided proxies and return okay if the proxy is working, each time it use a new user agent,
+```
+  1x.1xx.xxx.xxx [ OK ]
+  2x.2xx.xxx.xxx [ OK ]
+  3x.3xx.xxx.xxx [ OK ]
+  4x.4xx.xxx.xxx [ OK ]
+  
+```
 ### Your IP:
-py/python3 myip.py
+`py/python3 myip.py`\
+Prints your external IP address.
 ```
 123.x.x.x
 123.x.x.x
