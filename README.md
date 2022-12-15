@@ -6,9 +6,30 @@ Scrape proxies from different sites, store in JSON format
 pip install -r requirements.txt
 ```
 ### Your IP:
+py/python3 myip.py
 ```
->> py/python3 myip.py
-['123.x.x.x', '123.x.x.x', '{"ip":"123.x.x.x","country":"Pakistan","cc":"PK"}', '123.x.x.x']
+123.x.x.x
+123.x.x.x
+{"ip":"123.x.x.x","country":"Pakistan","cc":"PK"}
+123.x.x.x
+```
+```json
+{
+  "query": "198.49.68.80",
+  "status": "success",
+  "country": "United States",
+  "countryCode": "US",
+  "region": "FL",
+  "regionName": "Florida",
+  "city": "Orlando",
+  "zip": "32826",
+  "lat": 28.5752,
+  "lon": -81.2003,
+  "timezone": "America/New_York",
+  "isp": "HostDime.com, Inc.",
+  "org": "HostDime.com, Inc.",
+  "as": "AS33182 HostDime.com, Inc."
+}
 ```
 
 ### Scrape:
