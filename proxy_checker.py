@@ -28,8 +28,6 @@ def check_proxy(url, proxy, user_agent, MAX_TIMEOUT=3):
         print(f"Proxy Error : {url} : [ Proxy {proxy} ]")
     except exceptions.ConnectTimeout as err:
         print(f"Connection Timeout : {url} : [ Proxy {proxy} ]")
-    except exceptions.ConnectTimeout as err:
-        print(f"Connection Timeout : {url} : [ Proxy {proxy} ]")
     except Exception as err:
         print(err)
 
